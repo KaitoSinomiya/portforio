@@ -1,8 +1,795 @@
-@charset "UTF-8";
+@charset "utf-8";
+
+/* <====================================== */
+/* 全体のパーツ */
+/* =======================================> */
+.wrap {
+    width: 100%;
+}
+
+body {
+    background-color: #000;
+    font-size: 1rem;
+    color: #fff;
+
+}
+
+h2 {
+    text-decoration: underline;
+    letter-spacing: 0.05em;
+}
+
+a {
+    text-decoration: none;
+    outline: none;
+}
+
+li {
+    list-style: none;
+}
+
+/* img {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+} */
+
+/*==================================================
+ふわっ
+===================================*/
+
+/*==================================================
+カード非表示
+===================================*/
+.is-hidden {
+    height: 0px;
+    visibility: hidden;
+}
+
+/* fadeUp */
+
+.fadeUp {
+    animation-name: fadeUpAnime;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+
+@keyframes fadeUpAnime {
+    from {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* スクロールをしたら出現する要素にはじめに透過0を指定　*/
+
+.fadeUpTrigger {
+    opacity: 0;
+}
+
+/* カラー */
+.background_black {
+    background-color: rgb(0, 0, 0, 1);
+}
+
+@media screen and (min-width:940px) {
+    .background_black {
+        background: rgba(0, 0, 0, 0);
+
+    }
+}
+
+.font_white {
+    color: #fff;
+}
+
+
+/* フォント */
+.Mincho {
+    font-family: 'Zen Old Mincho', serif;
+}
+
+.Mysoul {
+    font-family: 'My Soul', cursive;
+}
+
+/* <====================================== */
+/* ヘッダー */
+/* =======================================> */
+.header {
+    box-sizing: content-box;
+    position: fixed;
+    top: 0;
+    height: 60px;
+    z-index: 100;
+    margin: auto;
+    width: 100%;
+}
+@media screen and (min-width:940px) {
+    .header {
+        height: 100px;
+    }
+}
+
+.top_nav {
+    font-size: 1rem;
+    margin-left: 20px;
+    margin-top: 15px;
+    color: white;
+    text-decoration: underline;
+    z-index: 2;
+    position: fixed;
+    letter-spacing: 0.05em;
+}
+
+@media screen and (min-width:940px) {
+    .top_nav {
+        font-size: 2rem;
+        margin-left: 40px;
+        margin-top: 30px;
+        margin-bottom: 35px;
+    }
+}
+
+
+.top_nav:hover {
+    opacity: 0.7;
+}
+
+.globalnavi_list {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+}
+
+/* アニメーション前の状態 */
+.globalnavi_list {
+    transform: translateY(-500vw);
+}
+
+@media screen and (min-width:940px) {
+    .globalnavi_list {
+        transform: translateY(-500vw);
+        transition: 0s;
+        display: block;
+    }
+}
+
+/* アニメーション後の状態 */
+.globalnavi_list.is-active {
+    transform: translateY(0);
+    transition: all 0.5s;
+}
+
+@media screen and (min-width:940px) {
+    .globalnavi_list {
+        display: flex;
+        transform: translateY(0);
+        background-color: rgba(0, 0, 0, 0);
+        flex-direction: row;
+        width: 400px;
+        height: 100px;
+        margin-right: 80px;
+    }
+}
+
+@media screen and (min-width:1500px) {
+    .globalnavi_list {
+        margin-right: 138px;
+    }
+}
+
+
+.globalnavi {
+    width: 100%;
+    height: auto;
+    padding: 1em 1em;
+    text-align: center;
+    box-sizing: border-box;
+    border-bottom: 1px  solid #fff;
+}
+
+@media screen and (min-width:940px) {
+    .globalnavi{
+        padding: 40px;
+        font-size: 1rem;
+        border-bottom: 0;
+        letter-spacing: 0.05em;
+    }
+}
+
+@media screen and (min-width:940px) {
+    .globalnavi :nth-child(4) {
+        border: 1px solid #fff;
+        padding: 5px 10px;
+        margin-left: 30px;
+    }
+}
+
+.globalnavi_list a {
+    color: #fff;
+}
+@media screen and (min-width:940px) {
+    .globalnavi_list a {
+        border-bottom: none;
+    }
+}
+
+.globalnavi_list a:hover {
+    opacity: 0.7;
+    text-decoration: underline;
+}
+
+.menuOpener {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 30px;
+    height: 12px;
+    z-index: 5;
+
+}
+
+@media screen and (min-width:940px) {
+    .menuOpener {
+        transform: translateY(-200vh);
+    }
+}
+
+.menuOpener_line {
+    content: '';
+    display: block;
+    height: 2px;
+    width: 25px;
+    background: white;
+    transition: 0.5s;
+    position: absolute;
+}
+
+.menuOpener_line:first-of-type {
+    top: 0;
+}
+
+.menuOpener_line:last-of-type {
+    top: 100%;
+}
+
+.menuOpener.is-active :first-of-type {
+    transform: translateY(0px) rotate(45deg);
+}
+
+.menuOpener.is-active :last-of-type {
+    transform: translateY(-12px) rotate(-45deg);
+}
+
+/* <====================================== */
+/* キービジュアル */
+/* =======================================> */
+.kv_wrap {
+    margin: 0;
+    position: relative;
+    max-width: 100%;
+    width: 100%;
+    height: 50vh;
+    display: block;
+}
+@media screen and (min-width:600px) {
+    .kv_wrap {
+    height: 75vh;
+    }
+}
+
+@media screen and (min-width:940px) {
+    .kv_wrap {
+    height: 100vh;
+    min-height: 400px;
+    }
+}
+
+.kv_wrap img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.kv {
+    display: block;
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+}
+
+.logo {
+    position: absolute;
+    width: 300px;
+    height: 80px;
+    top: 50%;
+    left: 50%;
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 20px 0;
+    transform: translate(-50%, -50%);
+    background-color: #000;
+
+}
+
+@media screen and (min-width:600px) {
+    .logo {
+
+        padding-top: 40px;
+        max-width: 600px;
+        width: 100%;
+        height: 150px;
+        font-size: 3rem;
+    }
+}
+
+
+@media screen and (min-width:940px) {
+    .logo {
+
+        padding-top: 60px;
+        max-width: 1140px;
+        width: 100%;
+        height: 250px;
+        font-size: 5rem;
+    }
+}
+
+
+/* <====================================== */
+/* アバウト */
+/* =======================================> */
+.About {
+    max-width: 100%;
+    width: 100%;
+    padding: 40px;
+    height: auto;
+    background: url(../../assets/images/About.jpg);
+    background-size: 100%;
+    overflow: hidden;
+    display: block;
+}
+@media screen and (min-width:940px) {
+    .About {
+        padding: 40px;
+    }
+}
+
+@media screen and (min-width:1399px) {
+    .About_flex {
+        display: flex;
+    }
+
+}
+
+.About_title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.About h3 {
+margin: 20px 0;
+}
+
+.About_text {
+
+    font-size: 1rem;
+    line-height: 40px;
+
+}
+
+.hakumen {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    object-fit: fill;
+    display: block;
+
+}
+
+/* <====================================== */
+/* スキル */
+/* =======================================> */
+.Skills {
+    padding: 20px;
+    position: relative;
+    display: flow-root;
+    margin: 0;
+    max-width: 100%;
+    width: 100%;
+    background: url(../../assets/images/skill_background.jpg);
+    background-size: 100%;
+}
+@media screen and (min-width:940px) {
+    .Skills {
+        padding: 40px;
+    }
+}
+
+
+.Skills_title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+@media screen and (min-width:940px) {
+    .Skill_box {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;
+    }
+}
+
+.Skill {
+    font-size: 1rem;
+    margin: 20px;
+}
+
+@media screen and (min-width:940px) {
+    .Skill {
+        width: calc(100% / 2 - 20px);
+        margin: 0;
+        padding: 2%;
+    }
+}
+
+.Skill li:nth-child(3) {
+
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+@media screen and (min-width:940px) {
+    .Skill li:nth-child(3) {
+        line-height: 50px;
+        padding-left: 150px;
+        padding-top: 20px;
+        padding-right: 150px;
+    }
+}
+.Skill img {
+    margin: 10px 0;
+    width: 50px;
+}
+
+/* <====================================== */
+/* ワークス */
+/* =======================================> */
+.Works_wrap {
+    padding: 50px 20px 20px 20px;
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    background: url(../../assets/images/Works_background.jpg);
+    background-size: 100%;
+    overflow: hidden;
+
+}
+@media screen and (min-width:940px){
+    .Works_wrap {
+        padding: 100px 20px 20px 20px;
+}
+}
+@media screen and (min-width:940px){
+    .Works {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+}
+
+.Works img {
+    filter: grayscale(1);
+    max-width: 600px;
+    width: 100%;
+    height: auto;
+    transition: 0.2s;
+}
+.Works img:hover {
+    transform: translate(-10px,-10px);
+    filter: grayscale(0);
+    box-shadow: 8px 8px  #fff;
+}
+@media screen and (min-width:940px){
+    .Works img {
+    Width: 100%;
+    height: 100%;
+    }
+}
+
+.Work {
+    width: 100%;
+}
+@media screen and (min-width:940px) {
+    .Work {
+        width: 30%;
+    }
+}
+
+
+.Work_img {
+    margin: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+/* .Work_img  a{
+    transition-duration: 0.5s;
+}
+.Work_img a:hover {
+    opacity: 0.7;
+    border-radius: 50%;
+    box-shadow: 0px 0px 16px -6px rgba(0,0,0,0.6);
+} */
+@media screen and (min-width:940px) {
+    .Work_img {
+        margin: 40px;
+        height: auto;
+    }
+}
+.Works_meta {
+    display: flex;
+    justify-content: space-around;
+}
+.Works_meta a{
+    text-align: center;
+    display: block;
+    padding: 5px 10px;
+    width: 100%;
+    color: #fff;
+    background-color: #908c8c;
+    border: 2px solid;
+    border-radius: 20px;
+    font-size: 1rem;
+    }
+.Works_meta a:hover{
+        opacity: 0.7;
+    }
+.Work_single {
+    text-align: center;
+}
+.Work_single p{
+    line-height: 2;
+    display: flex;
+    justify-content: center;
+    text-align: left;
+}
+
+.Works_title {
+    margin-bottom: 40px;
+    font-size: 2rem;
+    text-align: center;
+}
+
+
+
+.Work_title {
+    color: #fff;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+
+.Work_title a{
+    color: #fff;
+}
+
+.Work_text {
+    font-size: 1rem;
+    margin: 20px;
+
+}
+
+@media screen and (min-width:940px) {
+    .Work_text {
+        margin: 40px;
+        width: 50%;
+    }
+}
+
+@media screen and (min-width:1500px) {
+    .Work_text {
+        margin: 100px;
+    }
+}
+.Work_text a:hover {
+    opacity: 0.7;
+}
+.Work_text a {
+    color: #fff;
+}
+
+.button_wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+}
+
+.button {
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    max-width: 200px;
+    width: 100%;
+    height: 50px;
+    border: 3px solid #fff;
+    color: #fff;
+
+}
+
+@media screen and (min-width:940px) {
+    .button {
+        margin: 50px;
+    }
+}
+
+@media screen and (min-width:1500px) {
+    .button {
+        margin: 100px;
+    }
+}
 
 /*
-Theme Name: portfolioのテーマです
-Author: Kaito_Shimiya
-Description: 四宮海都のポートフォリオです。よかったら見ていってください
-Version: 1.0
-*/
+.c-button01 {
+    position: relative;
+    font-size: 1rem;
+    text-align: center;
+    color: #fff;
+    margin: 35px;
+} */
+
+.button::before {
+    content: "";
+    position: absolute;
+    transform-origin: center;
+    padding: 1px;
+    width: 200px;
+    height: 50px;
+    background: #fff;
+    transition: opacity .15s ease-out, width .15s ease-out, height .15s ease-out, transform .15s ease-out;
+    font-size: 1rem;
+    z-index: -1;
+    opacity: 0;
+}
+
+.button:hover {
+    transition: transform 0.5s ease-out;
+    transform: scale(1.15);
+    color: #000;
+
+}
+
+.button:hover::before {
+    opacity: 1;
+    width: 200px;
+    height: 50px;
+    transform: scale(1.15)
+}
+
+/* <====================================== */
+/* フッター */
+/* =======================================> */
+.l_footer {
+    position: relative;
+    max-width: 100%;
+    width: 100%;
+    height: 120px;
+    background-color: #404040;
+}
+
+@media screen and (min-width:940px) {
+    .l_footer {
+        height: 200px;
+    }
+}
+
+.toTop {
+    position: absolute;
+    width: 50px;
+    height: 20px;
+    top: 50px;
+    right: 20px;
+    border: 1px solid #fff;
+}
+
+.toTop:hover {
+    background-color: #000;
+}
+
+@media screen and (min-width:940px) {
+    .toTop {
+        width: 120px;
+        height: 40px;
+        top: 80px;
+        right: 100px;
+    }
+}
+
+.toTop span {
+    display: inline-block;
+    position: relative;
+    top: 0px;
+    left: 19px;
+    width: 10px;
+    height: 10px;
+    border-top: 1px solid #fff;
+    border-left: 1px solid #fff;
+    transform: translate(-50%);
+    transform: rotate(45deg);
+}
+
+@media screen and (min-width:940px) {
+    .toTop span {
+        display: inline-block;
+        position: relative;
+        top: 15px;
+        left: 48px;
+        width: 20px;
+        height: 20px;
+        border-top: 1px solid #fff;
+        border-left: 1px solid #fff;
+        transform: translate(-50%);
+        transform: rotate(45deg);
+    }
+}
+
+.copylight {
+    font-size: 1rem;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translatex(-50%);
+}
+
+/* @media screen and (min-width:940px) {
+    .copylight {
+        font-size: 30px;
+    }
+} */
+
+.Contact {
+    position: absolute;
+    top: 45px;
+    left: 10px;
+    font-size: 1rem;
+    border-bottom: 1px solid #fff;
+}
+
+.Contact:hover {
+    opacity: 0.7;
+}
+
+@media screen and (min-width:940px) {
+    .Contact {
+        /* font-size: 30px; */
+        top: 145px;
+        left: 20px;
+    }
+}
